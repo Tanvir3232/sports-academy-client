@@ -1,9 +1,29 @@
 import { Link } from 'react-router-dom';
 import loginBanner from '../../assets/images/login.png'
 import { useForm } from "react-hook-form";
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const {signIn} = useAuth();
+    const onSubmit = data => {
+        console.log(data);
+        signIn(data.email,data.password)
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+
+        })
+        .catch((error)=>{
+            Swal.fire({
+                position: 'top-middle',
+                icon: 'error',
+                title: `${error.message}`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+    };
 
     return (
         <div className="flex items-center gap-6 md:w-1/2 mx-auto">

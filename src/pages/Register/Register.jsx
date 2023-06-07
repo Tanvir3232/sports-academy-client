@@ -3,6 +3,7 @@ import registerBanner from '../../assets/images/register.png'
 import { useForm } from "react-hook-form";
 
 import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 const Register = () => {
     const { register,reset, handleSubmit, formState: { errors } } = useForm();
     const {signUp,saveProfile} = useAuth();
@@ -106,6 +107,7 @@ const Register = () => {
                     <br></br>
                     <input className='btn btn-primary btn-block' type="submit" value="Sign Up" />
                 </form>
+                <p className='mt-5 text-center'>Already have an account? <Link to='/login' className='text-green-500'>Sign In</Link></p>
             </div>
         </div>
     );
