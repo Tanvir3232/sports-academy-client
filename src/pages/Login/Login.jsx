@@ -3,9 +3,12 @@ import loginBanner from '../../assets/images/login.png'
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from 'react';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {signIn, signInWithGoogle} = useAuth();
+    const [hidePassword, setHidePassword] = useState(true);
     const handleSignInWithGoogle = (event) =>{
         event.preventDefault();
         signInWithGoogle()
@@ -57,10 +60,14 @@ const Login = () => {
                         {/* errors will return when field validation fails  */}
                         {errors.email && <span className='text-red-500'>email field is required</span>}
                     </div>
-                    <div className="w-full ">
-                        <input type='password' placeholder='Enter your password' className='my-input' {...register("password", { required: true })} />
+                    <div className="w-full relative">
+                        <input type={hidePassword ? 'password' : 'text'} placeholder='Enter your password' className='my-input' {...register("password", { required: true })} />
                         {/* errors will return when field validation fails  */}
                         {errors.password && <span className='text-red-500'>password field is required</span>}
+                        <div className=' absolute right-0 -mt-8 cursor-pointer' onClick={() => setHidePassword(!hidePassword)}>
+                            {hidePassword ? <FaEyeSlash ></FaEyeSlash> : <FaEye ></FaEye>}
+                        </div>
+
                     </div>
 
                     <br></br>
