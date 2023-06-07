@@ -5,7 +5,24 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {signIn} = useAuth();
+    const {signIn, signInWithGoogle} = useAuth();
+    const handleSignInWithGoogle = (event) =>{
+        event.preventDefault();
+        signInWithGoogle()
+        .then(res=>{
+            const loggedUser = res.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            Swal.fire({
+                position: 'top-middle',
+                icon: 'error',
+                title: `${error.message}`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+    }
     const onSubmit = data => {
         console.log(data);
         signIn(data.email,data.password)
@@ -53,7 +70,7 @@ const Login = () => {
                <hr className='mt-12' />
                 <h1 className='text-center font-semibold my-3'>Continue With Social</h1>
                 <div className='text-center '>
-                    <button className='btn btn-circle btn-outline btn-error'>G</button>
+                    <button onClick={handleSignInWithGoogle} className='btn btn-circle btn-outline btn-error'>G</button>
                 </div>
             </div>
         </div>
