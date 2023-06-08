@@ -27,7 +27,33 @@ const Register = () => {
             signUp(data.email, data.password)
                 .then(res => {
                     saveProfile(data.name, data.photo)
-                        .then(() => { })
+                        .then(() => {
+                          const userInfo = {name:data.name,email:data.email};
+                          fetch('http://localhost:5000/users',{
+                            method:"POST",
+                            headers:{
+                                'content-type':'application/json'
+                            },
+                            body: JSON.stringify(userInfo)
+                          })
+                          .then(res=>res.json())
+                          .then(insertData=>{
+                            console.log(insertData);
+                            if(insertData.insertedId){
+                                const loggedUser = res.user;
+                                console.log(loggedUser);
+                                Swal.fire({
+                                    position: 'top-middle',
+                                    icon: 'success',
+                                    title: 'your sign up successfully done',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                reset();
+                            }
+                          })
+
+                         })
                         .catch(error => {
                             Swal.fire({
                                 position: 'top-middle',
@@ -37,16 +63,7 @@ const Register = () => {
                                 timer: 1500
                             })
                         })
-                    const loggedUser = res.user;
-                    console.log(loggedUser);
-                    Swal.fire({
-                        position: 'top-middle',
-                        icon: 'success',
-                        title: 'your sign up successfully done',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    reset();
+                   
 
                 })
                 .catch(error => {

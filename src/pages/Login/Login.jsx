@@ -15,6 +15,29 @@ const Login = () => {
         .then(res=>{
             const loggedUser = res.user;
             console.log(loggedUser);
+            const userInfo = {name:loggedUser.displayName,email:loggedUser.email};
+            fetch('http://localhost:5000/users',{
+              method:"POST",
+              headers:{
+                  'content-type':'application/json'
+              },
+              body: JSON.stringify(userInfo)
+            })
+            .then(res=>res.json())
+            .then(insertData=>{
+              console.log(insertData);
+              if(insertData.insertedId){
+                 
+                  Swal.fire({
+                      position: 'top-middle',
+                      icon: 'success',
+                      title: 'your sign up successfully done',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+               
+              }
+            })
         })
         .catch(error=>{
             Swal.fire({
@@ -32,6 +55,7 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
+           
 
         })
         .catch((error)=>{
