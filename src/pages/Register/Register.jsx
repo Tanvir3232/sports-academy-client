@@ -26,10 +26,11 @@ const Register = () => {
         else {
             signUp(data.email, data.password)
                 .then(res => {
+                    const loggedUser = res.user;
                     saveProfile(data.name, data.photo)
                         .then(() => {
                           const userInfo = {name:data.name,email:data.email};
-                          fetch('http://localhost:5000/users',{
+                          fetch(`http://localhost:5000/users`,{
                             method:"POST",
                             headers:{
                                 'content-type':'application/json'
@@ -40,7 +41,7 @@ const Register = () => {
                           .then(insertData=>{
                             console.log(insertData);
                             if(insertData.insertedId){
-                                const loggedUser = res.user;
+                               
                                 console.log(loggedUser);
                                 Swal.fire({
                                     position: 'top-middle',

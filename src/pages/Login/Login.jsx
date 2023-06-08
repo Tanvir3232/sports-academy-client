@@ -16,7 +16,7 @@ const Login = () => {
             const loggedUser = res.user;
             console.log(loggedUser);
             const userInfo = {name:loggedUser.displayName,email:loggedUser.email};
-            fetch('http://localhost:5000/users',{
+            fetch(`http://localhost:5000/users`,{
               method:"POST",
               headers:{
                   'content-type':'application/json'
@@ -25,7 +25,7 @@ const Login = () => {
             })
             .then(res=>res.json())
             .then(insertData=>{
-              console.log(insertData);
+             
               if(insertData.insertedId){
                  
                   Swal.fire({
