@@ -3,11 +3,13 @@ import logo from '../assets/images/logo.png'
 import useAuth from '../hooks/useAuth';
 import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 const Dashboard = () => {
     const { user } = useAuth();
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
-    const isInstructor = false;
+    console.log('from admin',isAdmin);
+    const [isInstructor] = useInstructor();
+    console.log('from instructor',isInstructor);
     let userRole;
     if(isAdmin){
         userRole = 'admin';
