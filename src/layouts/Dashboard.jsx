@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import logo from '../assets/images/logo.png'
 import useAuth from '../hooks/useAuth';
 import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
@@ -23,8 +23,9 @@ const Dashboard = () => {
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content flex flex-col p-5">
                 {/* Page content here */}
+                <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
@@ -45,7 +46,7 @@ const Dashboard = () => {
                             <li><Link to='/dashboard'><FaTachometerAlt></FaTachometerAlt> My Dashboard</Link></li>
 
                             <li><Link to='/selected-classes'><FaClipboard></FaClipboard> Manage Classes</Link></li>
-                            <li><Link to='/enrolled-classes'><FaUser></FaUser> Manage Users</Link></li>
+                            <li><Link to='/dashboard/users'><FaUser></FaUser> Manage Users</Link></li>
                         </div>
 
                     }
