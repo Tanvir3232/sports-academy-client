@@ -6,6 +6,8 @@ import Home from "../pages/Home/Home/Home";
 import Dashboard from "../layouts/Dashboard";
 import AllUser from "../pages/Dashboard/AdminDashboard/AllUser/AllUser";
 import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
+import UpdateClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path:'addclass',
         element:<AddClass></AddClass>
+      },
+      {
+        path:'updateclass/:id',
+        element:<UpdateClass></UpdateClass>
+      },
+      {
+        path:'myclasses',
+        element:<MyClasses></MyClasses>
       }
     ]
   }
