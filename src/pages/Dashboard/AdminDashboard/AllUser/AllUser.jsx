@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useUserSecure from "../../../../hooks/useUserSecure";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
@@ -10,10 +10,36 @@ const AllUser = () => {
         return res.data;
     })
     const handleMakeAdmin = user => {
-        console.log(user)
+        userSecure.patch(`/users/admin/${user._id}`)
+        .then(res => {
+            console.log(res.data)
+            if(res.data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-middle',
+                    icon: 'success',
+                    title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
     }
     const handleMakeInstructor = user => {
-        console.log(user)
+        userSecure.patch(`/users/instructor/${user._id}`)
+        .then(res => {
+            console.log(res.data)
+            if(res.data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-middle',
+                    icon: 'success',
+                    title: `${user.name} is an Instructor Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
     }
     const handleDelete = id => {
         Swal.fire({
@@ -68,7 +94,9 @@ const AllUser = () => {
                                         <h6 className="font-bold ">{user.role}</h6>
                                         <div className="flex flex-col gap-2">
                                         <button onClick={() => handleMakeAdmin(user)} className="btn btn-xs mr-2 w-36 btn-outline">make Admin</button>
-                                        <button onClick={() => handleMakeInstructor(user)} className="btn btn-xs w-36  btn-warning btn-outline">make Instructor</button>
+                                         {
+                                            user.role !=='instructor'? <button  onClick={() => handleMakeInstructor(user)} className="btn btn-xs w-36  btn-warning btn-outline">make Instructor</button>:''
+                                         }
                                         </div>
                                     </div>
                                         
