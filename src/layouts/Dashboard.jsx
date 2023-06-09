@@ -2,9 +2,21 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png'
 import useAuth from '../hooks/useAuth';
 import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
+import useAdmin from '../hooks/useAdmin';
 const Dashboard = () => {
     const { user } = useAuth();
-    const userRole = 'instructor';
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
+    const isInstructor = false;
+    let userRole;
+    if(isAdmin){
+        userRole = 'admin';
+    }else if(isInstructor){
+        userRole = 'instructor';
+    }else{
+        userRole = 'student';
+    }
+    
     
     return (
         <div className="drawer lg:drawer-open">
