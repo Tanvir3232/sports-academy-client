@@ -5,6 +5,7 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home/Home";
 import Dashboard from "../layouts/Dashboard";
 import AllUser from "../pages/Dashboard/AdminDashboard/AllUser/AllUser";
+import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
+      // admin route
       {
         path: 'adminhome',
         element: <div>Admin Home</div>
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
       {
         path:'users',
         element:<AllUser></AllUser>
+      },
+      // instructor routes
+      {
+        path:'addclass',
+        element:<AddClass></AddClass>
       }
     ]
   }
