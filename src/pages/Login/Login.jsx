@@ -15,7 +15,7 @@ const Login = () => {
         .then(res=>{
             const loggedUser = res.user;
             console.log(loggedUser);
-            const userInfo = {name:loggedUser.displayName,email:loggedUser.email};
+            const userInfo = {name:loggedUser.displayName,email:loggedUser.email,photo:loggedUser.photoURL};
             fetch(`http://localhost:5000/users`,{
               method:"POST",
               headers:{

@@ -9,6 +9,7 @@ import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
 import UpdateClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/UpdateClass";
 import AllClass from "../pages/Dashboard/AdminDashboard/AllClass/AllClass";
+import Instructors from "../pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path:'/instructors',
+        element:<Instructors></Instructors>
       }
     ]
   },
