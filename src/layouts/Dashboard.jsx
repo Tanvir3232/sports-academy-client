@@ -45,7 +45,7 @@ const Dashboard = () => {
                         <div className="w-2/3 mx-auto">
                             <li><Link to='/dashboard'><FaTachometerAlt></FaTachometerAlt> My Dashboard</Link></li>
 
-                            <li><Link to='/selected-classes'><FaClipboard></FaClipboard> Manage Classes</Link></li>
+                            <li><Link to='/dashboard/allclasses'><FaClipboard></FaClipboard> Manage Classes</Link></li>
                             <li><Link to='/dashboard/users'><FaUser></FaUser> Manage Users</Link></li>
                         </div>
 

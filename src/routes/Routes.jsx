@@ -8,6 +8,7 @@ import AllUser from "../pages/Dashboard/AdminDashboard/AllUser/AllUser";
 import AddClass from "../pages/Dashboard/InstructorDashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses/MyClasses";
 import UpdateClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/UpdateClass";
+import AllClass from "../pages/Dashboard/AdminDashboard/AllClass/AllClass";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:'users',
         element:<AllUser></AllUser>
+      },
+      {
+        path:'allclasses',
+        element:<AllClass></AllClass>
       },
       // instructor routes
       {
