@@ -3,7 +3,7 @@ import registerBanner from '../../assets/images/register.png'
 import { useForm } from "react-hook-form";
 
 import useAuth from '../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Register = () => {
@@ -11,7 +11,7 @@ const Register = () => {
     const { signUp, saveProfile } = useAuth();
     const [hidePassword, setHidePassword] = useState(true);
     const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
-
+    const navigate = useNavigate();
     const onSubmit = data => {
         console.log(data);
         if (data.password !== data.cpassword) {
@@ -51,6 +51,7 @@ const Register = () => {
                                     timer: 1500
                                 })
                                 reset();
+                                navigate('/');
                             }
                           })
 

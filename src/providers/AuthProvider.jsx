@@ -21,12 +21,12 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   }
   const saveProfile = (name, photo) => {
-    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name, photoURL: photo
     });
   }
   const logOut = ()=>{
+    setLoading(true)
     return signOut(auth);
   }
   useEffect(()=>{

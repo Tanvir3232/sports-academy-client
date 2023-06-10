@@ -11,11 +11,14 @@ import UpdateClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/Upda
 import AllClass from "../pages/Dashboard/AdminDashboard/AllClass/AllClass";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/instructors',
-        element:<Instructors></Instructors>
+        element:<PrivateRoute><Instructors></Instructors></PrivateRoute>
       },
       {
         path:'/classes',

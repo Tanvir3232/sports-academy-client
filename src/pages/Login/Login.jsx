@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginBanner from '../../assets/images/login.png'
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
@@ -9,6 +9,11 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {signIn, signInWithGoogle} = useAuth();
     const [hidePassword, setHidePassword] = useState(true);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
     const handleSignInWithGoogle = (event) =>{
         event.preventDefault();
         signInWithGoogle()
@@ -35,7 +40,7 @@ const Login = () => {
                       showConfirmButton: false,
                       timer: 1500
                   })
-               
+                  navigate(from, { replace: true });
               }
             })
         })
@@ -55,7 +60,7 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
-           
+            navigate(from, { replace: true });
 
         })
         .catch((error)=>{
