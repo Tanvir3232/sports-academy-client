@@ -3,7 +3,7 @@
 const SingleInstructor = ({instructor}) => {
     const {name, email,photo} = instructor;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card  bg-base-100 shadow-xl">
             <figure className="px-10 h-72  pt-10">
                 <img src={photo} alt="Shoes" className="rounded-xl w-full h-full" />
             </figure>
