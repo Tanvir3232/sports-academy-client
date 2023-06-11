@@ -4,7 +4,7 @@ import SingleClass from "./SingleClass";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Classes = () => {
     const [userSecure] = useUserSecure();
@@ -14,6 +14,7 @@ const Classes = () => {
         return res.data;
     })
     const navigate = useNavigate();
+    const location = useLocation();
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner> 
       }
@@ -30,7 +31,7 @@ const Classes = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
-             navigate('/login')
+              navigate('/login', {state: {from: location}})
         }
         const {image,name,price,_id} = classData;
         const classInfo = {image,className:name,price,classId:_id,studentEmail:user.email};

@@ -14,6 +14,7 @@ import Classes from "../pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Secret from "../pages/Secret";
+import SelectedClasses from "../pages/Dashboard/StudentDashboard/SelectedClasses/SelectedClasses";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,11 @@ const router = createBrowserRouter([
       {
         path:'myclasses',
         element:<MyClasses></MyClasses>
+      },
+      //Student routes
+      {
+         path:'selectedClasses',
+         element:<SelectedClasses></SelectedClasses>
       }
     ]
   }
