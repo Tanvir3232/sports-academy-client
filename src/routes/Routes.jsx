@@ -15,6 +15,8 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Secret from "../pages/Secret";
 import SelectedClasses from "../pages/Dashboard/StudentDashboard/SelectedClasses/SelectedClasses";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
+import EnrolledClasses from "../pages/Dashboard/StudentDashboard/EnrolledClasses/EnrolledClasses";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +84,14 @@ const router = createBrowserRouter([
       {
          path:'selectedClasses',
          element:<SelectedClasses></SelectedClasses>
+      },
+      {
+         path:'enrolledClasses',
+         element:<EnrolledClasses></EnrolledClasses>
+      },
+      {
+         path:'payment/:id',
+         element:<Payment></Payment>
       }
     ]
   }

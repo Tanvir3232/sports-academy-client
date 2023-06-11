@@ -65,7 +65,7 @@ const Dashboard = () => {
                             <li><Link to='/dashboard'><FaTachometerAlt></FaTachometerAlt> My Dashboard</Link></li>
 
                             <li><Link to='/dashboard/selectedClasses'><FaCheckSquare></FaCheckSquare> My Selected Classes</Link></li>
-                            <li><Link to='/enrolled-classes'><FaBook></FaBook> My Enrolled Classes</Link></li>
+                            <li><Link to='/dashboard/enrolledClasses'><FaBook></FaBook> My Enrolled Classes</Link></li>
                         </div>
                     }
                    

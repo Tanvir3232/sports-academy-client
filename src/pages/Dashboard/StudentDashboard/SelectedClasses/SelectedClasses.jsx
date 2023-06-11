@@ -12,6 +12,7 @@ const SelectedClasses = () => {
         const res = await userSecure.get(`/selectedclasses?email=${user.email}`);
         return res.data;
     })
+    
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -50,7 +51,7 @@ const SelectedClasses = () => {
                             <th>Class Name</th>
                             <th>Image</th>
                             <th>Price</th>
-
+                          
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -61,12 +62,12 @@ const SelectedClasses = () => {
                                 <td>{classData.className}</td>
                                 <td><img className="w-24 h-20" src={classData.image} alt="" /></td>
                                 <td>${classData.price}</td>
-
+                              
                                 <td >
                                     <div className="flex items-center">
 
                                         <button onClick={() => handleDelete(classData._id)} className="btn btn-outline mr-2 btn-error"><FaTrashAlt></FaTrashAlt></button>
-                                        <Link to={`/dashboard/updateclass/${classData._id}`} className="btn btn-outline btn-success">Pay</Link>
+                                        <Link to={`/dashboard/payment/${classData._id}`} className="btn btn-outline btn-success">Pay</Link>
                                     </div>
                                 </td>
                             </tr>)
