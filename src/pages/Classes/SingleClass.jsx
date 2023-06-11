@@ -1,5 +1,5 @@
 
-const SingleClass = ({classData}) => {
+const SingleClass = ({classData,saveSelectedClass}) => {
     const {image,name,instructorName,seats,price} = classData;
     return (
         <div className="card  bg-base-100 shadow-xl">
@@ -10,7 +10,7 @@ const SingleClass = ({classData}) => {
                 <p><strong>Price: </strong> {price}</p>
                 <p><strong>Instructor Name: </strong> {instructorName}</p>
                
-                    <button className="btn btn-primary btn-outline btn-block">Select Class</button>
+                    <button onClick={()=>saveSelectedClass(classData)} className="btn btn-primary btn-outline btn-block">Select Class</button>
                 
             </div>
         </div>
