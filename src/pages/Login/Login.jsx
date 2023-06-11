@@ -20,6 +20,7 @@ const Login = () => {
         .then(res=>{
             const loggedUser = res.user;
             console.log(loggedUser);
+            navigate(from, { replace: true });
             const userInfo = {name:loggedUser.displayName,email:loggedUser.email,photo:loggedUser.photoURL};
             fetch(`http://localhost:5000/users`,{
               method:"POST",
@@ -40,7 +41,7 @@ const Login = () => {
                       showConfirmButton: false,
                       timer: 1500
                   })
-                  navigate(from, { replace: true });
+                 
               }
             })
         })

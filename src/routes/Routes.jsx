@@ -13,6 +13,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Secret from "../pages/Secret";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/instructors',
-        element:<PrivateRoute><Instructors></Instructors></PrivateRoute>
+        element:<Instructors></Instructors>
+      },
+      {
+        path:'/secret',
+        element:<PrivateRoute><Secret></Secret></PrivateRoute>
       },
       {
         path:'/classes',
