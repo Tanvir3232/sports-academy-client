@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useUserSecure from "../../../../hooks/useUserSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 
 
@@ -9,10 +10,13 @@ const AllClass = () => {
     const [userSecure] = useUserSecure();
     const [classDataModal, setClassDataModal] = useState(null);
     const [feedbackMessage, setFeedbackMessage] = useState('');
-    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+    const { data: classes = [], refetch,isLoading } = useQuery(['classes'], async () => {
         const res = await userSecure.get('/classes');
         return res.data;
     })
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
     const handleApprove = classData => {
         console.log(classData)
         userSecure.patch(`/classes/approve/${classData._id}`)

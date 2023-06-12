@@ -3,14 +3,18 @@ import useUserSecure from "../../../../hooks/useUserSecure";
 import {  FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const MyClasses = () => {
     const [userSecure] = useUserSecure();
     const {user}       = useAuth();
-    const { data: classes = [] } = useQuery(['classes'], async () => {
+    const { data: classes = [],isLoading } = useQuery(['classes'], async () => {
         const res = await userSecure.get(`/classes?email=${user.email}`);
         return res.data;
     })
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
     return (
         <div>
         <h1 className="text-3xl font-semibold ">My Classes</h1>
