@@ -5,10 +5,18 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Classes = () => {
     const [userSecure] = useUserSecure();
     const {user} = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    let checkStudent = true;
+    if(isAdmin || isInstructor){
+        checkStudent = false;
+    }
     const { data: classes = [],isLoading,isError } = useQuery(['classes'], async () => {
         const res = await userSecure.get('/classes?status=approved');
         return res.data;
@@ -57,6 +65,7 @@ const Classes = () => {
              key={classData._id}
              classData={classData}
              saveSelectedClass={saveSelectedClass}
+             checkStudent = {checkStudent}
             ></SingleClass>)}
         </div>
     );
