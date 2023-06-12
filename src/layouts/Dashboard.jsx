@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import logo from '../assets/images/logo.png'
 import useAuth from '../hooks/useAuth';
-import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
+import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaMoneyCheckAlt, FaPlus, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
 const Dashboard = () => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     <img src={logo} className='w-2/3' alt="" />
                     <figure className='flex flex-col justify-center items-center py-5'>
-                        <img src={user?.photoURL} className='rounded-full w-20' alt="not found" />
+                        <img src={user?.photoURL} className='rounded-full w-20 h-20' alt="not found" />
                         <h3>{user?.displayName}</h3>
                     </figure>
                     <div className="divider text-yellow-100 h-[1px] bg-red-100"></div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
                             <li><Link to='/dashboard'><FaTachometerAlt></FaTachometerAlt> My Dashboard</Link></li>
 
                             <li><Link to='/dashboard/myclasses'><FaCheckSquare></FaCheckSquare> My Classes</Link></li>
-                            <li><Link to='/dashboard/addclass'><FaBook></FaBook> Add a Class</Link></li>
+                            <li><Link to='/dashboard/addclass'><FaPlus></FaPlus> Add a Class</Link></li>
                         </div>
                     }
                     {
@@ -66,6 +66,8 @@ const Dashboard = () => {
 
                             <li><Link to='/dashboard/selectedClasses'><FaCheckSquare></FaCheckSquare> My Selected Classes</Link></li>
                             <li><Link to='/dashboard/enrolledClasses'><FaBook></FaBook> My Enrolled Classes</Link></li>
+                            <li><Link to='/dashboard/paymenthistory'><FaMoneyCheckAlt></FaMoneyCheckAlt> My Payment history</Link></li>
+                          
                         </div>
                     }
                    
