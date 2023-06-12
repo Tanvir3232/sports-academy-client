@@ -81,11 +81,11 @@ const Register = () => {
     };
 
     return (
-        <div className="flex items-center gap-6 md:w-1/2 mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:w-1/2 mx-auto">
             <figure className='md:w-1/2'>
                 <img src={registerBanner} className='w-full' alt="" />
             </figure>
-            <div className='w-1/2 border-2 p-2 bg-slate-700 rounded-xl text-white'>
+            <div className='md:w-1/2 border-2 p-2 bg-slate-700 rounded-xl text-white'>
                 <h1 className='text-3xl font-semibold text-center mb-12'>Sign Up </h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
