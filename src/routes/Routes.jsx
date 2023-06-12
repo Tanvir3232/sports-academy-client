@@ -18,6 +18,8 @@ import SelectedClasses from "../pages/Dashboard/StudentDashboard/SelectedClasses
 import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 import EnrolledClasses from "../pages/Dashboard/StudentDashboard/EnrolledClasses/EnrolledClasses";
 import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory/PaymentHistory";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -62,41 +64,41 @@ const router = createBrowserRouter([
       },
       {
         path:'users',
-        element:<AllUser></AllUser>
+        element:<AdminRoute><AllUser></AllUser></AdminRoute>
       },
       {
         path:'allclasses',
-        element:<AllClass></AllClass>
+        element:<AdminRoute><AllClass></AllClass></AdminRoute>
       },
       // instructor routes
       {
         path:'addclass',
-        element:<AddClass></AddClass>
+        element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
       },
       {
         path:'updateclass/:id',
-        element:<UpdateClass></UpdateClass>
+        element:<InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
       },
       {
         path:'myclasses',
-        element:<MyClasses></MyClasses>
+        element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       },
       //Student routes
       {
          path:'selectedClasses',
-         element:<SelectedClasses></SelectedClasses>
+         element:<PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
       },
       {
          path:'enrolledClasses',
-         element:<EnrolledClasses></EnrolledClasses>
+         element:<PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>
       },
       {
          path:'paymenthistory',
-         element:<PaymentHistory></PaymentHistory>
+         element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       },
       {
          path:'payment/:id',
-         element:<Payment></Payment>
+         element:<PrivateRoute><Payment></Payment></PrivateRoute>
       }
     ]
   }

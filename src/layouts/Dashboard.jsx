@@ -4,18 +4,22 @@ import useAuth from '../hooks/useAuth';
 import { FaBook, FaCheckSquare, FaClipboard, FaGraduationCap, FaHome, FaMoneyCheckAlt, FaPlus, FaTachometerAlt, FaUser, FaUserGraduate } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
+import LoadingSpinner from '../components/LoadingSpinner';
 const Dashboard = () => {
     const { user } = useAuth();
-    const [isAdmin] = useAdmin();
-    console.log('from admin',isAdmin);
-    const [isInstructor] = useInstructor();
-    console.log('from instructor',isInstructor);
+    const [isAdmin,isAdminLoading] = useAdmin();
+
+    const [isInstructor,isInstructorLoading] = useInstructor();
+    if(isAdminLoading || isInstructorLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
     let userRole;
     if(isAdmin){
         userRole = 'admin';
     }else if(isInstructor){
         userRole = 'instructor';
-    }else{
+    }
+    else{
         userRole = 'student';
     }
     
