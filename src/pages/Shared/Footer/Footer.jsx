@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 const Footer = () => {
     return (
-       <footer className="footer p-10 bg-[#1A244D] flex justify-between  text-white ">
+       <footer className="footer p-10 bg-[#1A244D] flex flex-col md:flex-row justify-between  text-white ">
                 <div>
                     <img src={logo} className='h-12' alt="" />
                     <p>Sports Academy Ltd<br />Providing reliable sports since 2000</p>

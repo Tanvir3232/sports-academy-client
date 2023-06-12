@@ -15,8 +15,8 @@ const InstructorCard = ({ instructorData }) => {
             </div>
             <h1 className="text-center font-bold text-xl my-5">All Classes</h1>
             {classes.map((classData, index) => <div className="flex flex-col md:flex-row px-8 justify-between " key={index}>
-                <span>{classData.name}</span>
-                <span>{classData.totalEnrolled}</span>
+                <li className="my-2">{classData.name}</li >
+               
             </div>)}
 
 

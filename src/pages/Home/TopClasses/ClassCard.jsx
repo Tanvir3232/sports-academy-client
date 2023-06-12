@@ -2,7 +2,7 @@
 const ClassCard = ({classData}) => {
     const {image,name,instructorName,seats,price} = classData;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card  bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={image} alt="Shoes" className="rounded-xl" />
             </figure>

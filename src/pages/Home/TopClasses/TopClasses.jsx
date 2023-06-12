@@ -13,7 +13,7 @@ const TopClasses = () => {
     return (
         <>
             <SectionTitle title='Top Classes'></SectionTitle>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
                 {classes.map(classData => <ClassCard
                     key={classData._id}
                     classData={classData}
