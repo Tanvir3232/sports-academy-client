@@ -30,7 +30,7 @@ const Register = () => {
                     saveProfile(data.name, data.photo)
                         .then(() => {
                           const userInfo = {name:data.name,email:data.email,photo:data.photo};
-                          fetch(`http://localhost:5000/users`,{
+                          fetch(`https://sports-academy-server-rouge.vercel.app/users`,{
                             method:"POST",
                             headers:{
                                 'content-type':'application/json'
