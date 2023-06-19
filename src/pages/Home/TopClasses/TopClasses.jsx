@@ -3,13 +3,18 @@ import useUserSecure from "../../../hooks/useUserSecure";
 
 import ClassCard from "./ClassCard";
 import SectionTitle from "../../../components/SectionTitle";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const TopClasses = () => {
     const [userSecure] = useUserSecure();
-    const { data: classes = [] } = useQuery(['classes'], async () => {
+    const { data: classes = [],isLoading } = useQuery(['classes'], async () => {
         const res = await userSecure.get('/classes/topclasses');
         return res.data;
     })
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
+    
     return (
         <>
             <SectionTitle title='Top Classes'></SectionTitle>

@@ -39,11 +39,11 @@ const UpdateClass = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Render a loading indicator while fetching data
+    return <div>Loading...</div>; 
   }
 
   if (isError) {
-    return <div>Error occurred while fetching class data.</div>; // Render an error message if data fetching fails
+    return <div>Error occurred while fetching class data.</div>
   }
 
   return (

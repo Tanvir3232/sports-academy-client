@@ -4,14 +4,18 @@ import useUserSecure from "../../../../hooks/useUserSecure";
 import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const SelectedClasses = () => {
     const [userSecure] = useUserSecure();
     const { user } = useAuth();
-    const { data: selectedclasses = [], refetch } = useQuery(['selectedclasses'], async () => {
+    const { data: selectedclasses = [],isLoading, refetch } = useQuery(['selectedclasses'], async () => {
         const res = await userSecure.get(`/selectedclasses?email=${user.email}`);
         return res.data;
     })
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
     
     const handleDelete = id => {
         Swal.fire({

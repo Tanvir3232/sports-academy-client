@@ -2,13 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useUserSecure from "../../../../hooks/useUserSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 const AllUser = () => {
     const [userSecure] = useUserSecure();
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
+    const { data: users = [], refetch,isLoading } = useQuery(['users'], async () => {
         const res = await userSecure.get('/users');
         return res.data;
     })
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
     const handleMakeAdmin = user => {
         userSecure.patch(`/users/admin/${user._id}`)
         .then(res => {

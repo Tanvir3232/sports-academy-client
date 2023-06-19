@@ -20,6 +20,7 @@ import EnrolledClasses from "../pages/Dashboard/StudentDashboard/EnrolledClasses
 import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory/PaymentHistory";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -57,10 +58,9 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      // admin route
       {
-        path: 'adminhome',
-        element: <div>Admin Home</div>
+        path:'',
+        element: <DashboardHome></DashboardHome>
       },
       {
         path:'users',

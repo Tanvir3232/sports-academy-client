@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 
 const userSecure = axios.create({
-  baseURL: 'https://sports-academy-server-rouge.vercel.app', 
+  baseURL: 'http://localhost:5000', 
 });
 
 const useUserSecure = () => {

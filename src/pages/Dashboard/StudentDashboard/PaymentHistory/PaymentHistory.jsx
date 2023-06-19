@@ -2,17 +2,21 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useUserSecure from "../../../../hooks/useUserSecure";
 import moment from "moment/moment";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 
 const PaymentHistory = () => {
     const [userSecure] = useUserSecure();
     const { user } = useAuth();
-    const { data: payments = [] } = useQuery(['payments'], async () => {
+    const { data: payments = [] ,isLoading} = useQuery(['payments'], async () => {
         const res = await userSecure.get(`/payments?email=${user?.email}`);
         return res.data;
     })
   
-    console.log(user?.email,payments)
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
+    
     return (
         <div>
         <h1 className="text-3xl font-semibold ">My Payment History</h1>

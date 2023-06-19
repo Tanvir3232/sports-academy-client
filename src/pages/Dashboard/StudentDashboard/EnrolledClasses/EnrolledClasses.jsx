@@ -1,17 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useUserSecure from "../../../../hooks/useUserSecure";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 
 const EnrolledClasses = () => {
     const [userSecure] = useUserSecure();
     const { user } = useAuth();
-    const { data: enrolledclasses = [] } = useQuery(['enrolledclasses'], async () => {
+    const { data: enrolledclasses = [] ,isLoading} = useQuery(['enrolledclasses'], async () => {
         const res = await userSecure.get(`user/enrolledclasses?email=${user?.email}`);
         return res.data;
     })
-  
-    console.log(user?.email,enrolledclasses)
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
+    
     return (
         <div>
         <h1 className="text-3xl font-semibold ">My Enrolled Classes</h1>
