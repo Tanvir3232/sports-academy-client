@@ -68,10 +68,10 @@ const AdminHome = () => {
             </div>
             <div className='flex gap-6 my-5'>
                 <div className='card shadow-xl  bg-gray-200'>
-                    <PieContainer pieData={chartData}></PieContainer>
+                    <PieContainer pieData={chartData} dataKey='count' nameKey='role' ></PieContainer>
                 </div>
                 <div className='card shadow-xl  bg-gray-200'>
-                    <BarContainer barData={barData}></BarContainer>
+                    <BarContainer barData={barData} xLabel='month' yValue='total'></BarContainer>
                 </div>
 
             </div>

@@ -1,15 +1,15 @@
 
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
-const PieContainer = ({ pieData }) => {
+const PieContainer = ({ pieData,dataKey,nameKey }) => {
   const COLORS = ['#3ea055', '#454f83', '#ff3856', '#FF8042'];
 
   return (
     <PieChart width={480} height={400}>
       <Pie
         data={pieData}
-        dataKey="count"
-        nameKey="role"
+        dataKey={dataKey}
+        nameKey={nameKey}
         cx="50%"
         cy="50%"
         outerRadius={150}

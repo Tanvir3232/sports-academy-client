@@ -4,6 +4,8 @@ import useUserSecure from "../../../hooks/useUserSecure";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import StatCard from "../../../components/StatCard";
 import { FaUsers, FaExclamationCircle, FaCheckCircle } from "react-icons/fa";
+import BarContainer from "../../../components/BarContainer";
+import PieContainer from "../../../components/PieContainer";
 
 const InstructorHome = () => {
   const [userSecure] = useUserSecure();
@@ -15,13 +17,27 @@ const InstructorHome = () => {
       return res.data;
     },
   });
-  
+  const { data: pieData = {} } = useQuery({
+    queryKey: ['class-students'],
+    queryFn: async () => {
+      const res = await userSecure(`/class-students?email=${user.email}`);
+      return res.data;
+    },
+  });
+  const { data: barData = {} } = useQuery({
+    queryKey: ['instructor-earnings'],
+    queryFn: async () => {
+      const res = await userSecure(`/instructor-earnings?instructorEmail=${user.email}`);
+      return res.data;
+    },
+  });
+  console.log(barData);
   if (isLoading) {
     return <LoadingSpinner></LoadingSpinner>
   }
-  
-  console.log(stats);
-  
+
+
+
   return (
     <div>
       <div className="grid grid-cols-3 gap-6">
@@ -44,6 +60,22 @@ const InstructorHome = () => {
           iconBgColor="bg-green-500"
         />
       </div>
+
+      <div className='flex gap-6 mt-8'>
+        
+         
+          <div className='card shadow-xl  bg-gray-200'>
+          <h1 className="text-2xl p-5 font-semibold  "> Class Enrollment Distribution</h1>
+            <PieContainer pieData={pieData} dataKey='totalEnrolled' nameKey='name' ></PieContainer>
+          </div>
+      
+        
+          <div className='card shadow-xl  bg-gray-200'>
+          <h1 className="text-2xl p-5 font-semibold  ">  Revenue by Instructor</h1>
+            <BarContainer barData={barData} xLabel='name' yValue='earnings'></BarContainer>
+          </div>
+        </div>
+      
     </div>
   );
 };
