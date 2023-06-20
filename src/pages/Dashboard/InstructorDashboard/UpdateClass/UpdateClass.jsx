@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useUserSecure from "../../../../hooks/useUserSecure";
+import { Helmet } from "react-helmet";
 
 const UpdateClass = () => {
   const { id } = useParams();
@@ -17,29 +18,29 @@ const UpdateClass = () => {
   });
 
   const onSubmit = (data) => {
-   
+
     console.log('data', data);
     const { price, seats, className } = data;
     const updateClass = { seats: parseFloat(seats), name: className, price: parseFloat(price) }
     console.log(updateClass)
     userSecure.patch(`/classes/${id}`, updateClass)
-        .then(resData => {
+      .then(resData => {
 
-            if (resData.data.modifiedCount > 0) {
+        if (resData.data.modifiedCount > 0) {
 
-                Swal.fire({
-                    position: 'top-middle',
-                    icon: 'success',
-                    title: 'Class updated successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        })
+          Swal.fire({
+            position: 'top-middle',
+            icon: 'success',
+            title: 'Class updated successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   if (isError) {
@@ -48,6 +49,9 @@ const UpdateClass = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Dashboard | Update Class</title>
+      </Helmet>
       <FormTitle title="Update a Class"></FormTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="md:w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">

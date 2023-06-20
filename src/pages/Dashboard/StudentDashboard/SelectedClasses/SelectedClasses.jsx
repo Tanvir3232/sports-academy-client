@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const SelectedClasses = () => {
     const [userSecure] = useUserSecure();
@@ -45,6 +46,9 @@ const SelectedClasses = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Selected Classes</title>
+            </Helmet>
             <h1 className="text-3xl font-semibold ">My Selected Classes</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">

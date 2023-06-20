@@ -3,6 +3,7 @@ import useUserSecure from "../../../../hooks/useUserSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 
 
@@ -35,7 +36,7 @@ const AllClass = () => {
             })
     }
     const handleDisapprove = classData => {
-        console.log(classData)
+       
         setClassDataModal(classData)
         userSecure.patch(`/classes/disapprove/${classData._id}`)
             .then(res => {
@@ -53,7 +54,7 @@ const AllClass = () => {
             })
     }
     const handleFeedback = (classData) => {
-        console.log(classData);
+      
         setClassDataModal(classData)
         window.my_modal_5.showModal();
     };
@@ -89,6 +90,9 @@ const AllClass = () => {
       
     return (
         <div>
+             <Helmet>
+                <title>Dashboard | Manage Classes</title>
+            </Helmet>
             <h1 className="text-3xl font-semibold ">All Classes</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">

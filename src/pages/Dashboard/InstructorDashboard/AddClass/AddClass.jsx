@@ -3,6 +3,7 @@ import FormTitle from "../../../../components/FormTitle";
 import useAuth from "../../../../hooks/useAuth";
 import useUserSecure from "../../../../hooks/useUserSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const AddClass = () => {
@@ -45,6 +46,9 @@ const AddClass = () => {
     };
     return (
         <div>
+             <Helmet>
+                <title>Dashboard | Add Class</title>
+            </Helmet>
             <FormTitle title='Add  a Class'></FormTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='md:w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6'>

@@ -3,6 +3,7 @@ import useUserSecure from "../../../../hooks/useUserSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../../../components/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const AllUser = () => {
     const [userSecure] = useUserSecure();
@@ -73,6 +74,9 @@ const AllUser = () => {
     }
     return (
         <div>
+             <Helmet>
+                <title>Dashboard | Manage Users</title>
+            </Helmet>
             <h1 className="text-3xl font-semibold ">Manage Users</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
